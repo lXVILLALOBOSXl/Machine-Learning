@@ -33,6 +33,14 @@ public abstract class RegressionModel {
         return this.determinationCoefficient;
     }
 
+    public double predict(double[][] x) {
+        double prediction = beta[0];
+        for (int i = 0; i < x[0].length; i++) {
+            prediction += beta[i + 1] * x[0][i];
+        }
+        return prediction;
+    }
+
     public static double calculateDeterminationCoefficient(DataSet dataSet, double[] betas) {
         double[][] xValues = dataSet.getX();
         double[] yValues = dataSet.getY();
